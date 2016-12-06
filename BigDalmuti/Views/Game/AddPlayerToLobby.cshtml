@@ -1,0 +1,25 @@
+﻿<header>
+    <meta http-equiv="refresh" content="5">
+
+    @using BigDalmuti.Models
+    @using BigDalmuti.Extensions
+    @model List<Player>
+</header>
+
+<body>
+    @{
+        ViewBag.Title = "Game lobby";
+    }
+
+    <h2>Game lobby</h2>
+
+    @foreach (var player in Model)
+    {
+        <div>Displayname: @player.DisplayName + @player.PlayerNumber</div>
+    }
+    @if (Session.GetPlayerNumberFromSession() == 1) {
+    <form method="post" runat="server" action="PlayGame">
+        <input type="submit" id="startGame" value="Start game" class="btn btn-default" />
+    </form>
+    }
+</body>
